@@ -8,25 +8,31 @@ const Login = () => {
   const [name, setname] = useState("");
   const [password, setpassword] = useState("");
   const navigate = useNavigate();
-  const onClickHandler = () => {
+  const onSubmit = (e) => {
+    e.preventDefault();
     let path = "/dashboard";
     signIn(name, password, () => {
       navigate(path, { replace: true });
     });
   };
   return (
-    <div>
+    <>
       <h1>Login page</h1>
       <div>
-        <label>Email: </label>
-        <input type={"email"} onChange={(e) => setname(e.target.value)} />
-        <br />
-        <label>Password: </label>
-        <input type={"password"} onChange={(e) => setname(e.target.value)} />
+        <form onSubmit={onSubmit}>
+          <label>Email: </label>
+          <input type="email" onChange={(e) => setname(e.target.value)} />
+          <br />
+          <label>Password: </label>
+          <input
+            type="password"
+            onChange={(e) => setpassword(e.target.value)}
+          />
 
-        <button onClick={onClickHandler}>Login</button>
+          <button>Login</button>
+        </form>
       </div>
-    </div>
+    </>
   );
 };
 

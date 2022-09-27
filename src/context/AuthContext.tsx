@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import { fakeSync } from "../helper/fakeSync";
+import { FakeSync } from "../helper/FakeSync";
 import { IAuthContext } from "./IAuthContext";
 
 export const AuthContext = createContext<IAuthContext>(null!);
@@ -22,7 +22,7 @@ const AuthProvider = (props) => {
     newPassword: string,
     callBack: VoidFunction
   ) => {
-    return fakeSync.signin(() => {
+    return FakeSync.signin(() => {
       const token =
         "fkdfdFASDF0f9dsfdFA.fFasfsa9fFafa9-432432f46ads46fadf.faf6a4df+"; // dummy token
       localStorage.setItem(STORAGE_KEY, token);
@@ -33,11 +33,13 @@ const AuthProvider = (props) => {
     });
   };
   const signOut = (callBack: VoidFunction) => {
-    localStorage.clear();
-    settoken(null);
-    setpassword(null);
-    setuser(null);
-    callBack();
+    return FakeSync.signin(() => {
+      localStorage.clear();
+      settoken(null);
+      setpassword(null);
+      setuser(null);
+      callBack();
+    });
   };
 
   return (

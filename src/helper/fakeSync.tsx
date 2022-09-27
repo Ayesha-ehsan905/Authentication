@@ -1,4 +1,4 @@
-const fakeSync = {
+const FakeSync = {
   signin(callback: VoidFunction) {
     setTimeout(callback, 100); // after timeout render
   },
@@ -7,4 +7,4 @@ const fakeSync = {
   },
 };
 
-export { fakeSync };
+export { FakeSync };
