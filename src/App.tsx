@@ -1,6 +1,7 @@
 import "./App.css";
 import AuthProvider, { AuthContext } from "./context/AuthContext";
 import React, { useContext } from "react";
+
 const Dashboard = React.lazy(() => import("./views/Dashboard"));
 const Login = React.lazy(() => import("./views/Login"));
 import {
