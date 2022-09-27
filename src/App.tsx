@@ -13,10 +13,10 @@ import {
 } from "react-router-dom";
 
 function LogoutCheck({ children }: { children: JSX.Element }) {
-  let auth = useContext(AuthContext);
+  let user = useContext(AuthContext);
   let location = useLocation();
 
-  if (!auth.user.user) {
+  if (!user.user.user) {
     return <Navigate to="/" state={{ from: location }} replace />;
   }
 
